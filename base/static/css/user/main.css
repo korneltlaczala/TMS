@@ -1,0 +1,53 @@
+@import "colors.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--accent-color-2);
+}
+
+nav {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+}
+
+nav h1 {
+    font-size: 2em;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    padding-left: 1rem;
+}
+
+nav h1:hover {
+    color: white;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:visited {
+    color: var(--light-color);
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+nav li {
+    padding: 0 1rem;
+    border-radius: 1rem;
+    margin-left: 1em;
+    transition: all 0.1s ease-in-out;
+}
