@@ -26,4 +26,5 @@ urlpatterns = [
     path('register_parent/', views.register_parent, name='register_parent'),
     path('register_player/', views.register_player, name='register_player'),
     path('password_reset/', views.password_reset, name='password_reset'),
+    path('players/', views.players, name='players'),
 ]

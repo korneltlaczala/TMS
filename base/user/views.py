@@ -20,3 +20,6 @@ def register_parent(request):
 
 def register_player(request):
     return render(request, 'user/register_player.html')
+
+def players(request):
+    return render(request, 'user/players.html')
