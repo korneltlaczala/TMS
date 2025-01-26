@@ -1,0 +1,13 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+def landing(request):
+    return render(request, 'user/landing.html')
+
+def login(request):
+    return render(request, 'user/login.html')
+
+def register(request):
+    return render(request, 'user/register.html')
