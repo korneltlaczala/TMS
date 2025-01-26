@@ -3,44 +3,21 @@
 {% load static %}
 {% block content %}
 
-<link rel="stylesheet" href="{% static '/css/user/auth.css' %}">
+<link rel="stylesheet" href="{% static '/css/user/account_type_choice.css' %}">
 
-<div class="auth-frame">
-    <div class="auth-card">
-
-        <div class="auth-header">
-            <h1>Register</h1>
-            <p>Log in to your account</p>
+<div class="frame">
+    <h1>Choose your role</h1>
+    <p>What type of account do you want to create?</p>
+    <div class="card-container">
+        <div class="card">
+            <a href="{% url 'register_coach' %}">Coach</a>
         </div>
-
-        <div class="auth-form">
-            <form action="{% url 'login' %}" method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    <div class="input-group">
-                        <i class="fa-solid fa-user"></i>
-                        <input class="form-control" id="username" name="username" type="text" placeholder="Username or email" autofocus>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <i class="fa-solid fa-key"></i>
-                        <input class="form-control" id="password" name="password" type="password" placeholder="Password">
-                    </div>
-                </div>
-                <button class="submit" type="submit">Log in</button>
-            </form>
+        <div class="card">
+            <a href="{% url 'register_parent' %}">Parent</a>
         </div>
-
-        <div class="auth-divider">
-            <span></span>
+        <div class="card">
+            <a href="{% url 'register_player' %}">Player</a>
         </div>
-
-        <div class="auth-footer">
-            <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
-            <p>Forgot your password? <a href="{% url 'password_reset' %}">Reset here</a></p>
-        </div>
-
     </div>
 </div>
 

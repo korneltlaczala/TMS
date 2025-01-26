@@ -11,3 +11,12 @@ def register(request):
 
 def password_reset(request):
     return render(request, 'user/password_reset.html')
+
+def register_coach(request):
+    return render(request, 'user/register_coach.html')
+
+def register_parent(request):
+    return render(request, 'user/register_parent.html')
+
+def register_player(request):
+    return render(request, 'user/register_player.html')

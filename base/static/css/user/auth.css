@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: calc(100vh - 5rem);
     width: 100vw;
 }
 
@@ -18,14 +18,19 @@
 
 .auth-header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .auth-header h1 {
     font-size: 2rem;    
     margin-bottom: 6px;
     margin-bottom: 10px;
-    color: var(--dark-color);
+    color: var(--primary-color);
 }
 
 .auth-header p {
@@ -35,31 +40,25 @@
 }
 
 .auth-form {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .auth-form .form-group {
     margin-bottom: 20px;
 }
 
-.auth-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: var(--dark-color);
-}
-
 .auth-form .input-group {
     display: flex;
     align-items: center;
-    border: 1px solid var(--dark-color);
+    border: 2px solid var(--primary-color);
     border-radius: 5px;
     overflow: hidden;
+    transition: border 0.1s ease-in-out;
 }
 
 .auth-form .input-group i {
     padding: 10px;
-    color: var(--dark-color);
+    color: var(--primary-color);
 }
 
 .auth-form .input-group input {
@@ -71,9 +70,14 @@
     color: var(--dark-color);
 }
 
+.auth-form .input-group:focus-within {
+    border: 2px solid var(--primary-color-light);
+}
+
 .auth-form .submit {
     display: block;
     width: 100%;
+    font-weight: bold;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -81,6 +85,7 @@
     color: var(--light-color);
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
 }
 
 .auth-form .submit:hover {
@@ -89,7 +94,7 @@
 
 .auth-divider {
     text-align: center;
-    margin: 20px 0;
+    margin: 3rem 0;
     color: var(--dark-color);
     border: 0.5px solid lightgray;
 }
@@ -98,6 +103,11 @@
     text-align: center;
     font-size: 1rem;
     color: gray;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .auth-footer p {
@@ -105,7 +115,7 @@
 }
 
 .auth-footer a {
-    color: var(--primary-color);
+    color: var(--primary-color-light);
     text-decoration: none;
     font-weight: bold;
     margin-left: 5px;
@@ -114,3 +124,4 @@
 .auth-footer a:hover {
     text-decoration: underline;
 }
+

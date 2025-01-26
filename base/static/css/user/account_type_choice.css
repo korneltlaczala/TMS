@@ -1,0 +1,63 @@
+@import "colors.css";
+
+.frame {
+    height: calc(100vh - 5rem);
+    width: 100vw;
+    padding: 2rem;
+    user-select: none;
+}
+
+
+.frame h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 8rem;
+}
+
+.frame p {
+    font-size: 1.2rem;
+    color: gray;
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+    text-align: center;
+}
+
+.card-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    color: var(--light-color);
+    text-align: center;
+    cursor: pointer;
+    height: min(30vw, 15vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card a {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--light-color);
+    text-decoration: none;
+    user-select: none;
+}
+
+/* .card button {
+
+} */
+
+.card:hover {
+    background-color: var(--primary-color-light);
+}
