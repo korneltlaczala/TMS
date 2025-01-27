@@ -32,6 +32,11 @@
     margin-bottom: 6px;
     margin-bottom: 10px;
     color: var(--primary-color);
+    transition: transform 0.1s ease-in-out;
+}
+
+.auth-header h1:hover {
+    transform: scale(1.05) rotate(0.8deg) translate(0.08rem, -0.08rem);
 }
 
 .auth-header p {

@@ -15,26 +15,17 @@
     <tbody>
         {% for player in players %}
         <tr>
-            <td><a href="{% url 'player' player.id %}">{{ player.name }}</a></td>
+            <td><a href="{% url 'player' player.id %}"><button class="btn-info">View</button></a></td>
+            <td>{{ player.name }}</td>
             <td>{{ player.surname }}</td>
             <td>{{ player.age }}</td>
             <td>{{ player.gender }}</td>
-            <td>
-                <form action="{% url 'update_player' player.id %}" method="get">
-                    {% csrf_token %}
-                    <button type="submit">Update</button>
-                </form>
-            </td>
-            <td>
-                <form action="{% url 'delete_player' player.id %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
+            <td><a href="{% url 'update_player' player.id %}"><button class="btn-update">Update</button></a></td>
+            <td><a href="{% url 'delete_player' player.id %}"><button class="btn-delete">Delete</button></a></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<a href="{% url 'create_player' %}">Create Player</a>
+<a href="{% url 'create_player' %}"><button class="btn-create">Create Player</button></a>
 
 {% endblock content %}

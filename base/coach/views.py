@@ -38,9 +38,16 @@ def create_player(request):
     return render(request, 'coach/player_form.html', context)
 
 def delete_player(request, player_id):
+    if request.method == 'POST':
+        player = Player.objects.get(id=player_id)
+        player.delete()
+        return redirect('players')
+    
     player = Player.objects.get(id=player_id)
-    player.delete()
-    return redirect('/coach/players')
+    context = {
+        'player': player
+    }
+    return render(request, 'coach/delete_player.html', context)
 
 def update_player(request, player_id):
     player = Player.objects.get(id=player_id)
