@@ -28,14 +28,14 @@ def create_player(request):
         form = PlayerForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/coach/players')
+            return redirect('players')
 
     form = PlayerForm()
     context = {
         'form': form
     }
 
-    return render(request, 'coach/player_details.html', context)
+    return render(request, 'coach/player_form.html', context)
 
 def delete_player(request, player_id):
     player = Player.objects.get(id=player_id)
@@ -48,11 +48,11 @@ def update_player(request, player_id):
         form = PlayerForm(request.POST, instance=player)
         if form.is_valid():
             form.save()
-            return redirect('/coach/players')
+            return redirect('players')
 
     form = PlayerForm(instance=player)
     context = {
         'form': form
     }
 
-    return render(request, 'coach/player_details.html', context)
+    return render(request, 'coach/player_form.html', context)
