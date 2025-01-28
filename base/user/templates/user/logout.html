@@ -1,0 +1,18 @@
+{% extends 'user/base.html' %}
+
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static '/css/user/auth.css' %}">
+
+<div class="auth-frame">
+    <div class="auth-card info-card">
+        <h1>You have been logged out</h1>
+        <div class="content">
+            <p>Have a blast!</p>
+        </div>
+        <a href="{% url 'login' %}"><button class="btn-back">Log in again</button></a>
+    </div>
+</div>
+
+{% endblock content %}

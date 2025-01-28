@@ -20,9 +20,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('login/', views.login, name='login'),
+    # path('login/', views.login, name='login'),
     # path('', views.login, name='login'),
-    path('', views.register_coach),
+    path('', views.login, name='login'),
+    path('logout', views.logout, name='logout'),
     path('choose_account_type', views.choose_account_type, name='choose_account_type'),
     path('register/<str:type>', views.register, name='register'),
     path('register_coach/', views.register_coach, name='register_coach'),

@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from .models import Player
 from .forms import PlayerForm
 
+@login_required
 def dashboard(request):
     return render(request, 'coach/dashboard.html')
 

@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -18,10 +19,27 @@ def login(request):
     if request.method == 'POST':
         user_id = request.POST.get("username")
         password = request.POST.get("password")
-        print(user_id, password)
-        return render(request, 'user/login.html')
+        
+        user = get_user_model().objects.filter(username=user_id).first()
+        if user and user.check_password(password):
+            if user.is_active:
+                auth_login(request, user)
+                return HttpResponseRedirect(reverse('dashboard'))
+            else:
+                return render(request, 'user/login.html', {
+                    "message": "Your account has not been activated. Please check your email for the activation link."
+                })
+        else:
+            return render(request, 'user/login.html', {
+                "message": "Username/mail or password is incorrect."
+            })
 
     return render(request, 'user/login.html')
+
+def logout(request):
+    auth_logout(request)
+    return render(request, 'user/logout.html')
+    # return HttpResponseRedirect(reverse('login'))
 
 def choose_account_type(request):
     return render(request, 'user/choose_account_type.html')
