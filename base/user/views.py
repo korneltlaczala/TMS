@@ -4,37 +4,46 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.urls import reverse
 
-from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.contrib.auth import login as auth_login, logout as auth_logout, get_user_model, authenticate
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage
 from .tokens import account_activation_token
-from django.contrib.auth import get_user_model, logout
 
 # Create your views here.
 
 def login(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('dashboard'))
+
     if request.method == 'POST':
         user_id = request.POST.get("username")
         password = request.POST.get("password")
         
-        user = get_user_model().objects.filter(username=user_id).first()
-        if user and user.check_password(password):
-            if user.is_active:
-                auth_login(request, user)
-                return HttpResponseRedirect(reverse('dashboard'))
-            else:
-                return render(request, 'user/login.html', {
-                    "message": "Your account has not been activated. Please check your email for the activation link."
-                })
-        else:
+        user = authenticate(request, username=user_id, password=password)
+        if not user:
+            user = get_user_model().objects.filter(email=user_id).first()
+            username = user.username if user else None
+            user = authenticate(request, username=username, password=password)
+
+        if not user:
             return render(request, 'user/login.html', {
                 "message": "Username/mail or password is incorrect."
             })
 
+        if user.is_active:
+            auth_login(request, user)
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            return render(request, 'user/login.html', {
+                "message": "Your account has not been activated. Please check your email for the activation link."
+            })
     return render(request, 'user/login.html')
+
+def login2(request):
+    return HttpResponseRedirect(reverse('login'))
 
 def logout(request):
     auth_logout(request)
@@ -45,6 +54,9 @@ def choose_account_type(request):
     return render(request, 'user/choose_account_type.html')
 
 def register(request, type=None):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('dashboard'))
+
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')

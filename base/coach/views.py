@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Player
 from .forms import PlayerForm
 
-@login_required
+@login_required(login_url='login')
 def dashboard(request):
     return render(request, 'coach/dashboard.html')
 
