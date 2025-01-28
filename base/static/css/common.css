@@ -1,3 +1,5 @@
+@import "colors.css";
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -66,4 +68,39 @@ tr:nth-child(even) {
 
 .btn-create:hover {
     background-color: #1e7e34;
+}
+
+.btn-back {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-back:hover {
+    background-color: var(--primary-color-light);
+}
+
+.confirmation-card {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.confirmation-card h3 {
+    margin-bottom: 16px;
+}
+
+.confirmation-options form {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
 }

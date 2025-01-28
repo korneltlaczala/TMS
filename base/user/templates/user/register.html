@@ -3,15 +3,63 @@
 {% load static %}
 {% block content %}
 
-<link rel="stylesheet" href="{% static '/css/user/account_type_choice.css' %}">
+<link rel="stylesheet" href="{% static '/css/user/auth.css' %}">
 
-<div class="frame">
-    <h1>Choose your role</h1>
-    <p>What type of account do you want to create?</p>
-    <div class="card-container">
-        <a href="{% url 'register_coach' %}"><button>Coach</button></a>
-        <a href="{% url 'register_parent' %}"><button>Parent</button></a>
-        <a href="{% url 'register_player' %}"><button>Player</button></a>
+<div class="auth-frame">
+    <div class="auth-card">
+
+        <div class="auth-header">
+            <h1>Register as a {{type.capitalize}}</h1>
+            <p>Create a new account</p>
+        </div>
+
+        <div class="auth-form">
+            <form action="{% url 'register' type%}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input class="form-control" id="username" name="username" type="text" placeholder="Username" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input class="form-control" id="email" name="email" type="text" placeholder="Email" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="fa-solid fa-key"></i>
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="fa-solid fa-key"></i>
+                        <input class="form-control" id="password2" name="password2" type="password" placeholder="Confirm password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input class="form-checkbox" id="agree" name="agree" type="checkbox" required>
+                        <label for="agree">I agree to the<a href="{% url 'terms' %}">terms and conditions</a> of <b>TMS</b></label>
+                    </div>
+                </div>
+
+                {% if message %}<p class="error-message">{{ message }}</p>{% endif %}
+                <button class="submit" type="submit">Register</button>
+            </form>
+        </div>
+
+        <div class="auth-divider">
+            <span></span>
+        </div>
+
+        <div class="auth-footer">
+            <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+        </div>
+
     </div>
 </div>
 

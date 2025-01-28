@@ -1,10 +1,17 @@
 {% extends 'coach/base.html' %}
 
 {% block content %}
-    <h1>Are you sure you want to delete {{ player }}?</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        <a href="{% url 'players' %}">Cancel</a>
-        <input type="submit" name="Confirm">
-    </form>
+
+<div class="frame">
+    <div class="confirmation-card">
+        <h3>Are you sure you want to delete player {{ player.name }} {{ player.surname }}?</h3>
+        <div class="confirmation-options">
+            <form action="" method="post">
+                {% csrf_token %}
+                <a href="{% url 'players' %}"><button type="button" class="btn-info">Cancel</button></a>
+                <input type="submit" name="Confirm" class="btn-delete" value="Delete">
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}

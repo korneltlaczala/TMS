@@ -8,7 +8,6 @@ def dashboard(request):
     return render(request, 'coach/dashboard.html')
 
 def players(request):
-
     players = Player.objects.all()
     context = {
         'players': players,

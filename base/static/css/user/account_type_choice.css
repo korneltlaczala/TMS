@@ -1,4 +1,4 @@
-@import "colors.css";
+@import "../colors.css";
 
 .frame {
     height: calc(100vh - 5rem);

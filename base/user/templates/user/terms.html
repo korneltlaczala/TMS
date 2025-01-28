@@ -1,0 +1,22 @@
+{% extends 'user/base.html' %}
+
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static '/css/user/auth.css' %}">
+
+<div class="auth-frame">
+    <div class="auth-card info-card">
+        <h1>Terms and Conditions</h1>
+        <div class="content">
+            <p>Please read these terms and conditions carefully before using Our Service.</p>
+            <p>Arsenal will <b>ALWAYS</b> loose</p>
+            <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.</p>
+            <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
+            <p class="update-status">Last updated: January 26, 2025</p>
+        </div>
+        <a href="javascript:window.history.back()"><button class="btn-back">Back</button></a>
+    </div>
+</div>
+
+{% endblock content %}

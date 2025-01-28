@@ -15,6 +15,33 @@
     padding: 20px;
     width: 100%;
     max-width: 400px;
+    min-width: 300px
+}
+
+.info-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 2rem 3rem;
+    width: 100%;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-card h1 {
+    margin-bottom: 2rem;
+}
+
+.info-card p {
+    margin-bottom: 1rem;
+}
+
+.info-card .update-status {
+    font-size: 0.8rem;
+    color: var(--primary-color-light);
 }
 
 .auth-header {
@@ -51,6 +78,8 @@
 
 .auth-form .form-group {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .auth-form .input-group {
@@ -60,6 +89,7 @@
     border-radius: 5px;
     overflow: hidden;
     transition: border 0.1s ease-in-out;
+    width: 100%;
 }
 
 .auth-form .input-group i {
@@ -120,14 +150,14 @@
     margin-bottom: 5px;
 }
 
-.auth-footer a {
+.auth-card a {
     color: var(--primary-color-light);
     text-decoration: none;
     font-weight: bold;
     margin-left: 5px;
 }
 
-.auth-footer a:hover {
+.auth-card a:hover {
     text-decoration: underline;
 }
 
@@ -155,5 +185,10 @@
 
     .auth-footer {
         font-size: 0.9rem;
+    }
+
+    .info-card {
+        padding: 1rem;
+        max-width: 500px;
     }
 }
