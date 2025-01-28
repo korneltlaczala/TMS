@@ -30,5 +30,8 @@ urlpatterns = [
     path('register_player/', views.register_player, name='register_player'),
     path('password_reset/', views.password_reset, name='password_reset'),
     path('confirm_email/', views.confirm_email, name='confirm_email'),
+    path('activate/<uidb64>/<token>', views.activate, name='activate'),
+    path('activation_successful/', views.activation_successful, name='activation_successful'),
+    path('activation_unsuccessful/', views.activation_unsuccessful, name='activation_unsuccessful'),
     path('terms/', views.terms, name='terms'),
 ]

@@ -4,6 +4,7 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static '/css/user/auth.css' %}">
+<script src="{% static 'js/register.js' %}"></script>
 
 <div class="auth-frame">
     <div class="auth-card">
@@ -19,36 +20,52 @@
                 <div class="form-group">
                     <div class="input-group">
                         <i class="fa-solid fa-user"></i>
-                        <input class="form-control" id="username" name="username" type="text" placeholder="Username" autofocus>
+                        <input class="form-control"
+                                id="username" name="username" type="text" placeholder="Username" autofocus value="{{ username|default_if_none:'' }}">
                     </div>
+                    <small>Choose a username, that:<ul>
+                        <li>has between 5 and 20 characters</li>
+                        <li>contains only letters, numbers and _</li>
+                    </ul></small>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <i class="fa-solid fa-envelope"></i>
-                        <input class="form-control" id="email" name="email" type="text" placeholder="Email" autofocus>
+                        <input class="form-control" id="email" name="email" type="text" placeholder="Email" value="{{ email|default_if_none:'' }}" autofocus>
                     </div>
+                    <small>Provide a valid email</small>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <i class="fa-solid fa-key"></i>
-                        <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Password" value="{{ password|default_if_none:'' }}">
                     </div>
+                    <small>Choose a password that:<ul>
+                        <li>is at least 8 characters long</li>
+                        <li>contains at least one uppercase letter</li>
+                        <li>contains at least one lowercase letter</li>
+                        <li>contains at least one number</li>
+                        <li>contains at least one special character</li>
+                    </ul></small>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <i class="fa-solid fa-key"></i>
-                        <input class="form-control" id="password2" name="password2" type="password" placeholder="Confirm password">
+                        <input class="form-control" id="password2" name="password2" type="password" placeholder="Confirm password" value="{{ password|default_if_none:'' }}">
                     </div>
+                    <small>Passwords must match</small>
                 </div>
                 <div class="form-group">
                     <div class="checkbox-group">
-                        <input class="form-checkbox" id="agree" name="agree" type="checkbox" required>
+                        <input class="form-checkbox" id="agree" name="agree" type="checkbox" required {% if agree %}checked{% endif %}>
                         <label for="agree">I agree to the<a href="{% url 'terms' %}">terms and conditions</a> of <b>TMS</b></label>
                     </div>
                 </div>
 
+                <div class="error-message-box">
                 {% if message %}<p class="error-message">{{ message }}</p>{% endif %}
-                <button class="submit" type="submit">Register</button>
+                </div>
+                <button class="submit" type="submit" disabled>Register</button>
             </form>
         </div>
 
