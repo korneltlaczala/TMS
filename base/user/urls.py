@@ -36,4 +36,6 @@ urlpatterns = [
     path('activation_successful/', views.activation_successful, name='activation_successful'),
     path('activation_unsuccessful/', views.activation_unsuccessful, name='activation_unsuccessful'),
     path('terms/', views.terms, name='terms'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('profile/', views.profile, name='profile'),
 ]
