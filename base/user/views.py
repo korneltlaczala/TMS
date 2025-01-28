@@ -15,6 +15,12 @@ from django.contrib.auth import get_user_model, logout
 # Create your views here.
 
 def login(request):
+    if request.method == 'POST':
+        user_id = request.POST.get("username")
+        password = request.POST.get("password")
+        print(user_id, password)
+        return render(request, 'user/login.html')
+
     return render(request, 'user/login.html')
 
 def choose_account_type(request):
