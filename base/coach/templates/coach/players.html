@@ -1,0 +1,31 @@
+{% extends 'coach/base.html' %}
+
+{% block content %}
+
+<h1>Players</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for player in players %}
+        <tr>
+            <td><a href="{% url 'player' player.id %}"><button class="btn-info">View</button></a></td>
+            <td>{{ player.name }}</td>
+            <td>{{ player.surname }}</td>
+            <td>{{ player.age }}</td>
+            <td>{{ player.gender }}</td>
+            <td><a href="{% url 'update_player' player.id %}"><button class="btn-update">Update</button></a></td>
+            <td><a href="{% url 'delete_player' player.id %}"><button class="btn-delete">Delete</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'create_player' %}"><button class="btn-create">Create Player</button></a>
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'coach/base.html' %}
+
+{% block content %}
+
+    back to <a href="{% url 'players' %}">Players</a>
+
+    <h1>Player</h1>
+    <p>Name: {{ player.name }}</p>
+    <p>Surname: {{ player.surname }}</p>
+    <p>Age: {{ player.age }}</p>
+    <p>Gender: {{ player.gender }}</p>
+{% endblock content %}
