@@ -20,11 +20,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('choose_team/', views.choose_team, name='choose_team'),
-    path('', views.dashboard, name='dashboard_coach'),
-    path('players/', views.players, name='players'),
-    path('player/<int:player_id>', views.player, name='player'),
-    path('create_player/', views.create_player, name='create_player'),
-    path('delete_player/<int:player_id>', views.delete_player, name='delete_player'),
-    path('update_player/<int:player_id>', views.update_player, name='update_player'),
+    path('dashboard', views.dashboard, name='dashboard_parent'),
 ]

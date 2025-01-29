@@ -64,3 +64,6 @@ def update_player(request, player_id):
     }
 
     return render(request, 'coach/player_form.html', context)
+
+def choose_team(request):
+    return render(request, 'coach/choose_team.html')

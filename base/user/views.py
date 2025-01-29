@@ -50,8 +50,8 @@ def logout(request):
     return render(request, 'user/logout.html')
     # return HttpResponseRedirect(reverse('login'))
 
-def choose_account_type(request):
-    return render(request, 'user/choose_account_type.html')
+def choose_role(request):
+    return render(request, 'user/choose_role.html')
 
 def register(request, type=None):
     if request.user.is_authenticated:
