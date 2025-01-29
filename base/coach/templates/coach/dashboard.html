@@ -1,5 +1,20 @@
 {% extends 'coach/base.html' %}
 
 {% block content %}
-    <h1>Dashboard for the team {{ user.current_team }} </h1>
+
+<div class="frame">
+    <div class="content-card">
+        <h1>{{ name }}</h1>
+        <div class="content-divider">
+
+        </div>
+        <div class="object-card player-count-card">
+            <p>{{ player_count }}</p>
+            <div class="card-divider card-divider-wide"></div>
+            <h3>Players</h3>
+        </div>
+    </div>
+</div>
+
+
 {% endblock content %}

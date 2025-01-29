@@ -5,6 +5,15 @@ from user.models import User
 
 # Create your models here.
 
+class Team(models.Model):
+
+    name = models.CharField(max_length=200, null=True)
+    coach = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    logo = models.ImageField(null=True, blank=True)
+    
+    def __str__(self):
+        return f"{self.name}"
+
 class Player(models.Model):
 
     GENDER_CHOICES = (
@@ -16,6 +25,7 @@ class Player(models.Model):
     surname = models.CharField(max_length=200, null=True)
     dob = models.DateField(null=True)
     gender = models.CharField(max_length=200, null=True, choices=GENDER_CHOICES)
+    team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
     
     @property
     def age(self):
@@ -25,10 +35,13 @@ class Player(models.Model):
     def __str__(self):
         return f"{self.name} {self.surname} ({self.age})"
 
-class Team(models.Model):
+class Session(models.Model):
 
-    name = models.CharField(max_length=200, null=True)
-    coach = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    
+    date = models.DateField(null=True)
+    time = models.TimeField(null=True)
+    team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
+
+    players = models.ManyToManyField(Player)
+
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.date} {self.time}"

@@ -51,3 +51,8 @@ nav li button:hover {
     /* transform: scale(1.05); */
     text-decoration: underline;
 }
+
+nav p {
+    color: var(--light-color);
+    margin-right: 3rem;
+}

@@ -9,10 +9,19 @@ from .forms import PlayerForm
 
 @login_required(login_url='login')
 def dashboard(request):
-    return render(request, 'coach/dashboard.html')
+    team = request.user.current_team
+    name = team.name.capitalize()
+    player_count = Player.objects.filter(team=team).count()
+    context = {
+        'team': team,
+        'name': name,
+        'player_count': player_count
+    }
+    return render(request, 'coach/dashboard.html', context)
 
 def players(request):
-    players = Player.objects.all()
+    current_team = request.user.current_team
+    players = Player.objects.filter(team=current_team)
     context = {
         'players': players,
     }
@@ -77,3 +86,8 @@ def set_team(request, team_id):
     request.user.current_team = team
     request.user.save()
     return HttpResponseRedirect(reverse('dashboard'))
+
+def training_sessions(request):
+    sessions = request.user.current_team.session_set.all()
+    context = {sessions: sessions}
+    return render(request, 'coach/training_sessions.html', context)
