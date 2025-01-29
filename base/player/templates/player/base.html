@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/css/main.css' %}">
     <link rel="stylesheet" href="{% static '/css/common.css' %}">
-    <link rel="stylesheet" href="{% static '/css/user/auth.css' %}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <title>TMS</title>
 </head>
 <body>
-    {% include 'user/navigation.html' %}
-    <main>
-        {% block content %}{% endblock content %}
-    </main>
+    {% include 'player/navigation.html' %}
+    <main-frame>
+        {% include 'player/menu.html' %}
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
+    </main-frame>
 </body>
 </html>
