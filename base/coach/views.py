@@ -1,8 +1,10 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 # Create your views here.
-from .models import Player
+from .models import Player, Team
 from .forms import PlayerForm
 
 @login_required(login_url='login')
@@ -66,4 +68,12 @@ def update_player(request, player_id):
     return render(request, 'coach/player_form.html', context)
 
 def choose_team(request):
-    return render(request, 'coach/choose_team.html')
+    teams = request.user.team_set.all()
+    context = {'teams': teams}
+    return render(request, 'coach/choose_team.html', context)
+
+def set_team(request, team_id):
+    team = Team.objects.get(id=team_id)
+    request.user.current_team = team
+    request.user.save()
+    return HttpResponseRedirect(reverse('dashboard'))

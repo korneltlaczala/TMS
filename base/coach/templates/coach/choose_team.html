@@ -1,5 +1,17 @@
 {% extends 'coach/base.html' %}
 
 {% block content %}
-    <h1>Choose Team</h1>
+
+<div class="frame">
+    <div class="team-container">
+        {% for team in teams %}
+        <div class="team-card">
+            <h3>{{ team.name }}</h3>
+            <p>Coach: {{ team.coach.username }}</p>
+            <a href="{% url 'set_team' team.id %}"><button class="btn-info">Select team</button></a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock content %}  

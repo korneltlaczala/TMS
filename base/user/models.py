@@ -21,4 +21,5 @@ class User(AbstractUser):
         default=PLAYER,
         null=True,
     )
+    current_team = models.ForeignKey('coach.Team', on_delete=models.SET_NULL, null=True)
 
