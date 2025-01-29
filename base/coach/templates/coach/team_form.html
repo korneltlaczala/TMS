@@ -1,0 +1,21 @@
+{% extends 'coach/base.html' %}
+
+{% block content %}
+
+<div class="frame">
+    <div class="content-card">
+        <h1>Create player</h1>
+        <div class="title-divider"></div>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" name="submit">
+        <div class="action-bar">
+            <a href="{% url 'choose_team' %}"><button type ="button" class="btn-info">Cancel</button></a>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'coach/base.html' %}
+
+{% block content %}
+
+<div class="frame">
+    <div class="content-card">
+        <h1>Teams</h1>
+        <div class="title-divider"></div>
+        <div class="container team-container">
+            {% for team in teams %}
+            <a href="{% url 'set_team' team.id %}"><button class="object-card team-card">
+                <div class="card-divider"></div>
+                <h3>{{ team.name }}</h3>
+            </button></a>
+            {% endfor %}
+        </div>
+        <div class="action bar">
+            <a href="{% url 'create_team' %}"><button class="btn-create">Create Team</button></a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}  

@@ -3,8 +3,6 @@
 {% load static %}
 {% block content %}
 
-<link rel="stylesheet" href="{% static '/css/user/auth.css' %}">
-
 <div class="auth-frame">
     <div class="auth-card">
 
@@ -41,7 +39,7 @@
         </div>
 
         <div class="auth-footer">
-            <p>Don't have an account? <a href="{% url 'choose_account_type' %}">Register here</a></p>
+            <p>Don't have an account? <a href="{% url 'choose_role' %}">Register here</a></p>
             <p>Forgot your password? <a href="{% url 'password_reset' %}">Reset here</a></p>
         </div>
 

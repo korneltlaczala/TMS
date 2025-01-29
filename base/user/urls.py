@@ -25,7 +25,7 @@ urlpatterns = [
     path('', views.login, name='login'),
     path('login/', views.login2, name='login2'),
     path('logout/', views.logout, name='logout'),
-    path('choose_account_type/', views.choose_account_type, name='choose_account_type'),
+    path('choose_role/', views.choose_role, name='choose_role'),
     path('register/<str:type>/', views.register, name='register'),
     path('register_coach/', views.register_coach, name='register_coach'),
     path('register_parent/', views.register_parent, name='register_parent'),
@@ -36,4 +36,6 @@ urlpatterns = [
     path('activation_successful/', views.activation_successful, name='activation_successful'),
     path('activation_unsuccessful/', views.activation_unsuccessful, name='activation_unsuccessful'),
     path('terms/', views.terms, name='terms'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('profile/', views.profile, name='profile'),
 ]

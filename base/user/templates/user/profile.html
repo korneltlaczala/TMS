@@ -1,0 +1,23 @@
+{% extends base_page %}
+
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static '/css/user/auth.css' %}">
+
+<div class="auth-frame">
+    <div class="auth-card info-card">
+        <h1>{{user.role}} Profile</h1>
+        <div class="content">
+            <p>Username: {{ user.username }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Role: {{ user.role }}</p>
+        </div>
+        <div class="options">
+            <a href="{% url 'dashboard' %}"><button class="btn-back">Dashboard</button></a>
+            <a href="{% url 'logout' %}"><button class="btn-back">Logout</button></a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

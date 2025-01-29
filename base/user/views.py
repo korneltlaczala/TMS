@@ -1,7 +1,7 @@
 from django.db import IntegrityError
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.models import User
+from user.models import User
 from django.urls import reverse
 
 from django.contrib.auth import login as auth_login, logout as auth_logout, get_user_model, authenticate
@@ -50,8 +50,8 @@ def logout(request):
     return render(request, 'user/logout.html')
     # return HttpResponseRedirect(reverse('login'))
 
-def choose_account_type(request):
-    return render(request, 'user/choose_account_type.html')
+def choose_role(request):
+    return render(request, 'user/choose_role.html')
 
 def register(request, type=None):
     if request.user.is_authenticated:
@@ -85,6 +85,7 @@ def register(request, type=None):
         try:
             user = User.objects.create_user(username=username, email=email, password=password)
             user.is_active = False
+            user.role = type.capitalize()
             user.save()
 
             current_site = get_current_site(request)
@@ -152,3 +153,18 @@ def activation_successful(request):
 
 def activation_unsuccessful(request):
     return render(request, 'user/activation_unsuccessful.html')
+
+def dashboard(request):
+    if request.user.role == 'Coach':
+        return HttpResponseRedirect(reverse('dashboard_coach'))
+    if request.user.role == 'Parent':
+        return HttpResponseRedirect(reverse('dashboard_parent'))
+    if request.user.role == 'Player':
+        return HttpResponseRedirect(reverse('dashboard_player'))
+
+    return HttpResponse("We're sorry, but something went wrong.<br>We do not recognize your account type.")
+
+def profile(request):
+    base_page = request.user.role + '/base.html'
+    context = {'base_page': base_page}
+    return render(request, 'user/profile.html', context)
