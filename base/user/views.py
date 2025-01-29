@@ -11,9 +11,11 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage
 from .tokens import account_activation_token
+from coach.decorators import unauthenticated_user
 
 # Create your views here.
 
+@unauthenticated_user
 def login(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('dashboard'))
@@ -42,6 +44,8 @@ def login(request):
             })
     return render(request, 'user/login.html')
 
+
+@unauthenticated_user
 def login2(request):
     return HttpResponseRedirect(reverse('login'))
 
@@ -50,9 +54,11 @@ def logout(request):
     return render(request, 'user/logout.html')
     # return HttpResponseRedirect(reverse('login'))
 
+@unauthenticated_user
 def choose_role(request):
     return render(request, 'user/choose_role.html')
 
+@unauthenticated_user
 def register(request, type=None):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('dashboard'))
@@ -110,16 +116,19 @@ def register(request, type=None):
                 "agree": agree,
             })
 
+@unauthenticated_user
 def register_coach(request):
     type = 'coach'
     context = {'type': type}
     return render(request, 'user/register.html', context)
 
+@unauthenticated_user
 def register_parent(request):
     type = 'parent'
     context = {'type': type}
     return render(request, 'user/register.html', context)
 
+@unauthenticated_user
 def register_player(request):
     type = 'player'
     context = {'type': type}

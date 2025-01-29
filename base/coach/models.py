@@ -26,6 +26,7 @@ class Player(models.Model):
     dob = models.DateField(null=True)
     gender = models.CharField(max_length=200, null=True, choices=GENDER_CHOICES)
     team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
+    hash = models.CharField(max_length=200, null=True)
     
     @property
     def age(self):

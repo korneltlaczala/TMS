@@ -4,7 +4,7 @@
 
 <div class="frame">
     <div class="content-card">
-        <h1>Player</h1>
+        <h1>Share player</h1>
         <div class="title-divider"></div>
         <table>
             <tr>
@@ -23,12 +23,13 @@
                 <th>Gender</th>
                 <td>{{ player.gender }}</td>
             </tr>
+            <tr>
+                <th>Hash</th>
+                <td>{{ player.hash }}</td>
+            </tr>
         </table>
         <div class="action-bar">
             <a href="{% url 'players' %}"><button class="btn-info">Back</button></a>
-            <a href="{% url 'update_player' player.id %}"><button class="btn-update">Edit</button></a>
-            <a href="{% url 'delete_player' player.id %}"><button class="btn-delete">Delete</button></a>
-            <a href="{% url 'share_player' player.id %}"><button class="btn-create">Share</button></a>
         </div>
     </div>
 </div>

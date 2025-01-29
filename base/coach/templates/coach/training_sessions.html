@@ -2,18 +2,17 @@
 
 {% block content %}
 
-
 <div class="frame">
     <div class="content-card">
         <h1>Training Sessions</h1>
         <div class="title-divider"></div>
         <div class="container session-container">
             {% for session in sessions %}
-            <div class="object-card training-session-card">
-                <h3>{{ Session }}</h3>
-                <p>Date: {{ session.date }}</p>
-                <p>Time: {{ session.time }}</p>
-            </div>
+                <div class="object-card training-session-card">
+                    <h3>Session</h3>
+                    <p>Date: {{ session.date }}</p>
+                    <p>Time: {{ session.time }}</p>
+                </div>
             {% endfor %}
         </div>
         <div class="action-bar">
