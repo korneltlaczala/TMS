@@ -29,4 +29,6 @@ urlpatterns = [
     path('update_player/<int:player_id>', views.update_player, name='update_player'),
     path('set_team/<int:team_id>', views.set_team, name='set_team'),
     path('training_sessions/', views.training_sessions, name='training_sessions'),
+    path('create_team/', views.create_team, name='create_team'),
+    path('create_session/', views.create_session, name='create_session'),
 ]

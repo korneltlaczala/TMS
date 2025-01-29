@@ -4,14 +4,14 @@
 
 <div class="frame">
     <div class="content-card">
-        <h1>Create player</h1>
+        <h1>Create session</h1>
         <div class="title-divider"></div>
         <form action="" method="post">
             {% csrf_token %}
             {{form}}
             <div class="action-bar">
                 <input type="submit" name="submit" class="btn-create" value="Create">
-                <a href="{% url 'players' %}"><button type="button" class="btn-info">Cancel</button></a>
+                <a href="{% url 'training_sessions' %}"><button type="button" class="btn-info">Cancel</button></a>
             </div>
         </form>
     </div>

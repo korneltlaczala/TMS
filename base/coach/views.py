@@ -3,9 +3,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
+from user.models import User
+
 # Create your views here.
 from .models import Player, Team
-from .forms import PlayerForm
+from .forms import PlayerForm, SessionForm, TeamForm
 
 @login_required(login_url='login')
 def dashboard(request):
@@ -39,6 +41,8 @@ def create_player(request):
     if request.method == 'POST':
         form = PlayerForm(request.POST)
         if form.is_valid():
+            player = form.save(commit=False)
+            player.team = request.user.current_team
             form.save()
             return redirect('players')
 
@@ -89,5 +93,40 @@ def set_team(request, team_id):
 
 def training_sessions(request):
     sessions = request.user.current_team.session_set.all()
+    print(sessions)
     context = {sessions: sessions}
     return render(request, 'coach/training_sessions.html', context)
+
+def create_team(request):
+    coach = request.user
+
+    if request.method == 'POST':
+        form = TeamForm(request.POST)
+        if form.is_valid():
+            team = form.save(commit=False)
+            team.coach = coach
+            form.save()
+            return HttpResponseRedirect(reverse('choose_team'))
+
+    form = TeamForm()
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'coach/team_form.html', context)
+
+def create_session(request):
+    if request.method == 'POST':
+        form = SessionForm(request.POST)
+        if form.is_valid():
+            session = form.save(commit=False)
+            session.team = request.user.current_team
+            form.save()
+            return HttpResponseRedirect(reverse('training_sessions'))
+
+    form = SessionForm()
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'coach/session_form.html', context)

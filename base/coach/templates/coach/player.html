@@ -2,11 +2,33 @@
 
 {% block content %}
 
-    back to <a href="{% url 'players' %}">Players</a>
-
-    <h1>Player</h1>
-    <p>Name: {{ player.name }}</p>
-    <p>Surname: {{ player.surname }}</p>
-    <p>Age: {{ player.age }}</p>
-    <p>Gender: {{ player.gender }}</p>
+<div class="frame">
+    <div class="content-card">
+        <h1>Player</h1>
+        <div class="title-divider"></div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <td>{{ player.name }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ player.surname }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ player.age }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ player.gender }}</td>
+            </tr>
+        </table>
+        <div class="action-bar">
+            <a href="{% url 'players' %}"><button class="btn-info">Back</button></a>
+            <a href="{% url 'update_player' player.id %}"><button class="btn-update">Edit</button></a>
+            <a href="{% url 'delete_player' player.id %}"><button class="btn-delete">Delete</button></a>
+        </div>
+    </div>
+</div>
 {% endblock content %}

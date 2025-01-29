@@ -141,14 +141,6 @@ main {
     height: 100%;
 }
 
-.action-bar {
-    padding: 2rem 0.5rem 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1rem;
-}
 
 .team-container {
     flex-direction: row;
@@ -171,6 +163,13 @@ main {
     color: white;
     transform: scale(0.98);
     cursor: pointer;
+}
+
+.team-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .team-card {
@@ -220,4 +219,56 @@ main {
     text-align: center;
     font-size: 7rem;
     font-weight: 900;
+}
+
+.content-card form {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.content-card form div:not(:last-child) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.content-card form div label {
+    margin-bottom: 0.5rem;
+}
+
+.content-card form div:not(:last-child) input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    width: 100%;
+}
+
+.content-card form div select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    width: 100%;
+    appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'><path fill='none' stroke='%23000' d='M2 0L0 2h4z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 10px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.content-card form div select:focus {
+    border-color: var(--primary-color-light);
+    outline: none;
+}
+
+.action-bar {
+    padding: 2rem 0.5rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
 }

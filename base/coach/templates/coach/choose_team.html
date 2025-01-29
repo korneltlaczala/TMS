@@ -9,11 +9,13 @@
         <div class="container team-container">
             {% for team in teams %}
             <a href="{% url 'set_team' team.id %}"><button class="object-card team-card">
-                <p>Coach: {{ team.coach.username }}</p>
                 <div class="card-divider"></div>
                 <h3>{{ team.name }}</h3>
             </button></a>
             {% endfor %}
+        </div>
+        <div class="action bar">
+            <a href="{% url 'create_team' %}"><button class="btn-create">Create Team</button></a>
         </div>
     </div>
 </div>

@@ -9,7 +9,7 @@ class Team(models.Model):
 
     name = models.CharField(max_length=200, null=True)
     coach = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    logo = models.ImageField(null=True, blank=True)
+    logo = models.ImageField(upload_to='', default='/team_badge.png', null=True, blank=True)
     
     def __str__(self):
         return f"{self.name}"
